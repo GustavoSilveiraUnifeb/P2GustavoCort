@@ -1,0 +1,19 @@
+private void btnBuscarPedido_Click(object sender, EventArgs e)
+{
+    string cpf = txtCPF.Text;
+    ListarPedidosPorCpf(cpf);
+}
+
+private void ListarPedidosPorCpf(string cpf)
+{
+    string[] linhas = File.ReadAllLines("pedidos.txt");
+    foreach (var linha in linhas)
+    {
+        var dados = linha.Split(',');
+    }
+}
+
+private void listViewPedidos_SelectedIndexChanged(object sender, EventArgs e)
+{
+    
+}
