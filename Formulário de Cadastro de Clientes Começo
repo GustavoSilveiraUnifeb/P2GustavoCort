@@ -1,0 +1,56 @@
+private void btnBuscarEndereco_Click(object sender, EventArgs e)
+{
+    string cep = txtCEP.Text;
+    var endereco = ObterEnderecoViaCep(cep);
+    
+    if (endereco != null)
+    {
+        txtLogradouro.Text = endereco.Logradouro;
+        txtBairro.Text = endereco.Bairro;
+        txtCidade.Text = endereco.Cidade;
+        txtEstado.Text = endereco.Estado;
+        // O número e telefone devem ser preenchidos pelo usuário
+    }
+    else
+    {
+        MessageBox.Show("CEP inválido.");
+    }
+}
+
+private Endereco ObterEnderecoViaCep(string cep)
+{
+    return new Endereco
+    {
+        Logradouro = "Rua Exemplo",
+        Bairro = "Bairro Exemplo",
+        Cidade = "Cidade Exemplo",
+        Estado = "Estado Exemplo"
+    };
+}
+
+private void btnSalvarCliente_Click(object sender, EventArgs e)
+{
+    string nome = txtNome.Text;
+    string cpf = txtCPF.Text;
+    string email = txtEmail.Text;
+    string enderecoCompleto = $"{txtLogradouro.Text},{txtNumero.Text},{txtBairro.Text},{txtCidade.Text},{txtEstado.Text}";
+    string telefone = txtTelefone.Text;
+    string whatsapp = txtWhatsApp.Text;
+
+    if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(cpf))
+    {
+        MessageBox.Show("Nome e CPF são obrigatórios.");
+        return;
+    }
+
+    SalvarCliente(nome, cpf, email, enderecoCompleto, telefone, whatsapp);
+    MessageBox.Show("Cliente cadastrado com sucesso!");
+}
+
+private void SalvarCliente(string nome, string cpf, string email, string endereco, string telefone, string whatsapp)
+{
+    using (StreamWriter sw = File.AppendText("clientes.csv"))
+    {
+        sw.WriteLine($"{nome},{cpf},{email},{endereco},{telefone},{whatsapp}");
+    }
+}
