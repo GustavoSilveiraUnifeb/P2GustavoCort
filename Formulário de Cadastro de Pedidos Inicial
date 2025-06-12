@@ -1,0 +1,29 @@
+private void btnAdicionarProduto_Click(object sender, EventArgs e)
+{
+    string codigoProduto = txtCodigoProduto.Text;
+    int quantidade;
+
+    if (!int.TryParse(txtQuantidade.Text, out quantidade))
+    {
+        MessageBox.Show("Quantidade inválida.");
+        return;
+    }
+
+    AdicionarProdutoAoPedido(codigoProduto, quantidade);
+}
+
+private void btnSalvarPedido_Click(object sender, EventArgs e)
+{
+    string cpfCliente = txtCPFCliente.Text;
+    SalvarPedido(cpfCliente);
+}
+
+private void AdicionarProdutoAoPedido(string codigoProduto, int quantidade)
+{
+    
+}
+
+private void SalvarPedido(string cpfCliente)
+{
+
+}
