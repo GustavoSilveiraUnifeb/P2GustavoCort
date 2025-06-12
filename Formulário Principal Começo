@@ -1,0 +1,23 @@
+private void cadastroClientesToolStripMenuItem_Click(object sender, EventArgs e)
+{
+    FormCadastroClientes formClientes = new FormCadastroClientes();
+    formClientes.Show();
+}
+
+private void cadastroProdutosToolStripMenuItem_Click(object sender, EventArgs e)
+{
+    FormCadastroProdutos formProdutos = new FormCadastroProdutos();
+    formProdutos.Show();
+}
+
+private void cadastroPedidosToolStripMenuItem_Click(object sender, EventArgs e)
+{
+    FormCadastroPedidos formPedidos = new FormCadastroPedidos();
+    formPedidos.Show();
+}
+
+private void cadastroUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+{
+    FormCadastroUsuarios formUsuarios = new FormCadastroUsuarios();
+    formUsuarios.Show();
+}
