@@ -9,7 +9,6 @@ private void btnSalvar_Click(object sender, EventArgs e)
         return;
     }
 
-    // Verificar se o usuário já existe
     if (UsuarioExiste(usuario))
     {
         MessageBox.Show("Usuário já existe.");
@@ -36,8 +35,8 @@ private bool UsuarioExiste(string usuario)
         var dados = linha.Split(',');
         if (dados[0] == usuario)
         {
-            return true; // Usuário já existe
+            return true;
         }
     }
-    return false; // Usuário não existe
+    return false; 
 }
