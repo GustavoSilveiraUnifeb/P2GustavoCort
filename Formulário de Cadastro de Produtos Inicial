@@ -1,0 +1,23 @@
+private void btnSalvarProduto_Click(object sender, EventArgs e)
+{
+    string nomeProduto = txtNomeProduto.Text;
+    decimal preco;
+
+    if (string.IsNullOrWhiteSpace(nomeProduto) || !decimal.TryParse(txtPreco.Text, out preco))
+    {
+        MessageBox.Show("Nome do produto e preço são obrigatórios.");
+        return;
+    }
+
+    string descricao = txtDescricao.Text;
+    SalvarProduto(nomeProduto, preco, descricao);
+    MessageBox.Show("Produto cadastrado com sucesso!");
+}
+
+private void SalvarProduto(string nomeProduto, decimal preco, string descricao)
+{
+    using (StreamWriter sw = File.AppendText("produtos.txt"))
+    {
+        sw.WriteLine($"{nomeProduto},{preco},{descricao}");
+    }
+}
