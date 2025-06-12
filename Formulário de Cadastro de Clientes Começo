@@ -9,7 +9,6 @@ private void btnBuscarEndereco_Click(object sender, EventArgs e)
         txtBairro.Text = endereco.Bairro;
         txtCidade.Text = endereco.Cidade;
         txtEstado.Text = endereco.Estado;
-        // O número e telefone devem ser preenchidos pelo usuário
     }
     else
     {
