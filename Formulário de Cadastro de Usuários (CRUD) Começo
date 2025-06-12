@@ -1,0 +1,43 @@
+private void btnSalvar_Click(object sender, EventArgs e)
+{
+    string usuario = txtUsuario.Text;
+    string senha = txtSenha.Text;
+
+    if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(senha))
+    {
+        MessageBox.Show("Usuário e senha são obrigatórios.");
+        return;
+    }
+
+    // Verificar se o usuário já existe
+    if (UsuarioExiste(usuario))
+    {
+        MessageBox.Show("Usuário já existe.");
+        return;
+    }
+
+    SalvarUsuario(usuario, senha);
+    MessageBox.Show("Usuário cadastrado com sucesso!");
+}
+
+private void SalvarUsuario(string usuario, string senha)
+{
+    using (StreamWriter sw = File.AppendText("usuarios.csv"))
+    {
+        sw.WriteLine($"{usuario},{senha}");
+    }
+}
+
+private bool UsuarioExiste(string usuario)
+{
+    string[] linhas = File.ReadAllLines("usuarios.csv");
+    foreach (var linha in linhas)
+    {
+        var dados = linha.Split(',');
+        if (dados[0] == usuario)
+        {
+            return true; // Usuário já existe
+        }
+    }
+    return false; // Usuário não existe
+}
